@@ -14,5 +14,5 @@ API Automation Test is RestAssured based TestNG framework to perform API testing
 **In terminal from root project folder (RestAssuredAPITestAutomation), run below commands as required**
 
 API Sources:
-Localhost: http://localhost:3000/ (run `npm start` command from src/main/app
+Localhost: http://localhost:3000/ (run `npm start` command from src/main/app <br>
 ReqRes API: https://reqres.in/
