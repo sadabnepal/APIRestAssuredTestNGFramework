@@ -6,6 +6,10 @@ API Automation Test is RestAssured based TestNG framework to perform API testing
 1. git clone https://github.com/sadabnepal/RestAssuredAPITestAutomation.git
 2. Navigate to RestAssuredAPITestAutomation
 ```
+## Pre-requisite
+    - Java
+    - NodeJS
+    - Maven
 
 **In terminal from root project folder (RestAssuredAPITestAutomation), run below commands as required**
 
