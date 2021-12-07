@@ -2,9 +2,9 @@
 API Automation Test is RestAssured based TestNG framework to perform API testing.
 
 ### Pre-requisite
-![Java](https://img.shields.io/badge/-Java-%23007396?logo=java&logoColor=black&)
+![Java](https://img.shields.io/badge/-Java%20JDK-%23007396?logo=java&logoColor=black&)
 ![Maven](https://img.shields.io/badge/-Maven-C71A36.svg?logo=Apache&logoColor=white)
-![NodeJs](https://img.shields.io/badge/-Node.js-%23339933?logo=npm&logoColor=white)
+![NodeJs](https://img.shields.io/badge/-NodeJS-%23339933?logo=npm&logoColor=white)
 
 ### Getting Started
 ```
@@ -13,8 +13,10 @@ API Automation Test is RestAssured based TestNG framework to perform API testing
 ```
 
 ### API Sources:
-    - Localhost: http://localhost:3000/ (run `npm start` command from src/main/app)
+    - Localhost: http://localhost:3000/
     - ReqRes API: https://reqres.in/
 
 ### Running Test
-Run all tests: Open project in code editor like eclipse or intellij idea  --> right click on testng.xml --> run as testng.xml
+- Start local server => navigate to `src/main/app` folder and run `npm start` command
+- Open terminal from root project folder and run `mvn test`  OR
+- Open project in code editor like eclipse or intellij idea ==> right click on testng.xml ==> run as testng.xml
