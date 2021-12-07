@@ -1,20 +1,20 @@
 package com.testnepal.tests;
 
-import com.testnepal.utils.JsonFormatter;
 import io.restassured.path.json.JsonPath;
 import org.testng.Assert;
 import org.testng.annotations.*;
+import io.restassured.response.Response;
 
 import static io.restassured.RestAssured.*;
-import io.restassured.response.Response;
+import static com.testnepal.utils.JsonFormatter.*;
 
 public class GetCallSampleTests extends BaseTest {
 
 	@Test(priority = 0)
 	public static void getUsersByIDTest() {
-		Response response =  given().when().log().all().get("users/2").then().extract().response();
+		Response response =  given().when().get("users/2").then().extract().response();
 
-		JsonPath jsonPath = JsonFormatter.convertResponseToJson(response);
+		JsonPath jsonPath = convertResponseToJson(response);
 		Assert.assertEquals(response.statusCode(), 200);
 		Assert.assertEquals(jsonPath.getInt("data.id"), 2);
 		Assert.assertEquals(jsonPath.getString("data.first_name"), "Janet");
@@ -27,7 +27,7 @@ public class GetCallSampleTests extends BaseTest {
 		Response response = given().queryParam("page", "2").when().get("users")
 				.then().extract().response();
 
-		JsonPath jsonPath = JsonFormatter.convertResponseToJson(response);
+		JsonPath jsonPath = convertResponseToJson(response);
 		Assert.assertEquals(response.statusCode(), 200);
 		Assert.assertEquals(jsonPath.getInt("page"), 2);
 		Assert.assertEquals(jsonPath.getInt("per_page"), 6);
