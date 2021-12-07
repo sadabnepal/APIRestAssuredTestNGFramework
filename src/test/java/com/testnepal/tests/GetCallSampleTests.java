@@ -1,5 +1,6 @@
 package com.testnepal.tests;
 
+import com.testnepal.utils.JsonFormatter;
 import io.restassured.path.json.JsonPath;
 import org.testng.Assert;
 import org.testng.annotations.*;
@@ -11,11 +12,9 @@ public class GetCallSampleTests extends BaseTest {
 
 	@Test(priority = 0)
 	public static void getUsersByIDTest() {
-		Response response =  given()
-				.when().log().all().get("users/2")
-				.then().extract().response();
+		Response response =  given().when().log().all().get("users/2").then().extract().response();
 
-		JsonPath jsonPath = new JsonPath(response.asString());
+		JsonPath jsonPath = JsonFormatter.convertResponseToJson(response);
 		Assert.assertEquals(response.statusCode(), 200);
 		Assert.assertEquals(jsonPath.getInt("data.id"), 2);
 		Assert.assertEquals(jsonPath.getString("data.first_name"), "Janet");
@@ -25,10 +24,10 @@ public class GetCallSampleTests extends BaseTest {
 
 	@Test(priority = 1)
 	public static void getUserListByPageTest() {
-		Response response = given().queryParam("page", "2").log().all()
-				.when().get("users")
+		Response response = given().queryParam("page", "2").when().get("users")
 				.then().extract().response();
-		JsonPath jsonPath = new JsonPath(response.asString());
+
+		JsonPath jsonPath = JsonFormatter.convertResponseToJson(response);
 		Assert.assertEquals(response.statusCode(), 200);
 		Assert.assertEquals(jsonPath.getInt("page"), 2);
 		Assert.assertEquals(jsonPath.getInt("per_page"), 6);

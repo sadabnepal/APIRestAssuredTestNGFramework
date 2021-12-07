@@ -1,5 +1,6 @@
 package com.testnepal.tests;
 
+import com.testnepal.utils.JsonFormatter;
 import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
 import org.testng.Assert;
@@ -21,7 +22,7 @@ public class LocalAPITests {
         Response response = given().when().get("employees").then().extract().response();
 
         Assert.assertEquals(response.statusCode(), 200);
-        JsonPath jsonPath = new JsonPath(response.asString());
+        JsonPath jsonPath = JsonFormatter.convertResponseToJson(response);
         Assert.assertEquals(jsonPath.getInt("data[0].id"), 1);
         Assert.assertEquals(jsonPath.getString("data[0].first_name"), "Sebastian");
         Assert.assertEquals(jsonPath.getString("data[0].last_name"), "Eschweiler");
@@ -31,7 +32,7 @@ public class LocalAPITests {
     public static void  getEmployeesTest() {
         Response response = given().when().get("company").then().extract().response();
 
-        JsonPath jsonPath = new JsonPath(response.asString());
+        JsonPath jsonPath = JsonFormatter.convertResponseToJson(response);
         Assert.assertEquals(jsonPath.getString("name"), "Test Automation Hub");
         Assert.assertEquals(jsonPath.getString("location"), "Nepal");
         Assert.assertEquals(jsonPath.getInt("noOfEmployee"), 200);

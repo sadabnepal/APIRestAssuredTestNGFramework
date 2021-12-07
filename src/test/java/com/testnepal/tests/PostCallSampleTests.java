@@ -1,6 +1,7 @@
 package com.testnepal.tests;
 
 import com.testnepal.resources.Payload;
+import com.testnepal.utils.JsonFormatter;
 import io.restassured.http.ContentType;
 import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
@@ -22,7 +23,7 @@ public class PostCallSampleTests  extends BaseTest {
                 .when().post("users")
                 .then().extract().response();
 
-        JsonPath jsonPath = new JsonPath(response.asString());
+        JsonPath jsonPath = JsonFormatter.convertResponseToJson(response);
         Assert.assertEquals(response.statusCode(), 201);
         Assert.assertEquals(jsonPath.getString("name"), user);
         Assert.assertEquals(jsonPath.getString("job"), job);
