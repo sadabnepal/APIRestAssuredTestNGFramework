@@ -7,7 +7,7 @@ import org.testng.annotations.*;
 import static io.restassured.RestAssured.*;
 import io.restassured.response.Response;
 
-public class GetCallSampleTests {
+public class GetCallSampleTests extends BaseTest {
 
 	@BeforeMethod
 	public static  void  setUp() {
@@ -29,7 +29,7 @@ public class GetCallSampleTests {
 	}
 
 	@Test(priority = 1)
-	public  static  void getUserListByPageTest() {
+	public static void getUserListByPageTest() {
 		Response response = given().queryParam("page", "2").log().all()
 				.when().get("users")
 				.then().extract().response();

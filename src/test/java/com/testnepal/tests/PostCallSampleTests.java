@@ -5,17 +5,11 @@ import io.restassured.http.ContentType;
 import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
 import org.testng.Assert;
-import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import static io.restassured.RestAssured.*;
 
-public class PostCallSampleTests {
-
-    @BeforeMethod
-    public static void setUp() {
-        baseURI = "https://reqres.in/api";
-    }
+public class PostCallSampleTests  extends BaseTest {
 
     @Test(priority = 2)
     public static void createUserTest() {
