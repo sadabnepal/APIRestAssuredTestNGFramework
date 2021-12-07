@@ -9,11 +9,6 @@ import io.restassured.response.Response;
 
 public class GetCallSampleTests extends BaseTest {
 
-	@BeforeMethod
-	public static  void  setUp() {
-		baseURI = "https://reqres.in/api";
-	}
-
 	@Test(priority = 0)
 	public static void getUsersByIDTest() {
 		Response response =  given()
