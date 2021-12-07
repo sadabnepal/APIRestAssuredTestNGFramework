@@ -7,9 +7,10 @@ API Automation Test is RestAssured based TestNG framework to perform API testing
 2. Navigate to RestAssuredAPITestAutomation
 ```
 ### Pre-requisite
-- ![Java](https://img.shields.io/badge/-Java-%23007396?logo=java&logoColor=black&)
-- ![Maven](https://img.shields.io/badge/-Maven-C71A36.svg?logo=Apache&logoColor=white)
-- ![NodeJs](https://img.shields.io/badge/-Node.js-%23339933?logo=npm&logoColor=white)
+![Java](https://img.shields.io/badge/-Java-%23007396?logo=java&logoColor=black&)
+![Maven](https://img.shields.io/badge/-Maven-C71A36.svg?logo=Apache&logoColor=white)
+![NodeJs](https://img.shields.io/badge/-Node.js-%23339933?logo=npm&logoColor=white)
+
 ### API Sources:
     - Localhost: http://localhost:3000/ (run `npm start` command from src/main/app)
     - ReqRes API: https://reqres.in/
