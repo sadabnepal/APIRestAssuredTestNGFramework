@@ -12,7 +12,7 @@ import static com.testnepal.utils.JsonFormatter.*;
 
 public class PostCallSampleTests extends BaseTest {
 
-    @Test(priority = 2)
+    @Test(priority = 2, description = "Create User")
     public static void createUserTest() {
         String user = "MD SADAB";
         String job = "Tester";

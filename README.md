@@ -22,4 +22,4 @@ API Automation Test is RestAssured based TestNG framework to perform API testing
 - Open project in code editor like eclipse or intellij idea ==> right click on testng.xml ==> run as testng.xml
 
 ### Sample Report
-![apireport](https://user-images.githubusercontent.com/65847528/145087196-375107dc-fa86-4dee-933c-a8e6f440be80.PNG)
+![image](https://user-images.githubusercontent.com/65847528/145362670-7c35a8c4-c869-4bbd-8a15-02d1ffa9eec4.png)
