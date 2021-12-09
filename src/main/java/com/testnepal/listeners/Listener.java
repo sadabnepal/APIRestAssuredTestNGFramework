@@ -1,6 +1,6 @@
 package com.testnepal.listeners;
 
-import com.testnepal.reports.ExtentManager;
+import com.testnepal.reporter.ExtentManager;
 import org.testng.*;
 
 
@@ -17,7 +17,7 @@ public class Listener implements ITestListener, ISuiteListener {
 
     @Override
     public void onTestStart(ITestResult result) {
-       ExtentManager.createExtentTest(result.getMethod().getDescription());
+       ExtentManager.createExtentTest(result.getMethod().getDescription(), "regression", "sadab", "Chrome");
     }
 
     @Override

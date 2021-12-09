@@ -1,0 +1,37 @@
+package com.testnepal.reporter;
+
+import com.aventstack.extentreports.*;
+import com.aventstack.extentreports.reporter.*;
+import com.aventstack.extentreports.reporter.configuration.Theme;
+
+import java.util.Objects;
+
+public final class ExtentManager {
+
+    private static ExtentReports extentReports;
+    public static ExtentTest extentTest;
+
+    public static void initReport() {
+        if (Objects.isNull(extentReports)) {
+            extentReports = new ExtentReports();
+            String rootDir = System.getProperty("user.dir");
+            ExtentSparkReporter sparkReporter = new ExtentSparkReporter(rootDir + "/reports/index.html");
+            extentReports.attachReporter(sparkReporter);
+
+            sparkReporter.config().setTheme(Theme.DARK);
+            sparkReporter.config().setDocumentTitle("API Report");
+            sparkReporter.config().setReportName("RestAssured Suit Report");
+        }
+    }
+
+    public static void flushReport() {
+        if (Objects.nonNull(extentReports)) {
+            extentReports.flush();
+        }
+    }
+
+    public static void createExtentTest(String testName, String category, String authorName, String device) {
+        extentTest = extentReports.createTest(testName).assignCategory(category).assignAuthor(authorName).assignDevice(device);
+    }
+
+}

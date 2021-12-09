@@ -21,5 +21,10 @@ API Automation Test is RestAssured based TestNG framework to perform API testing
 - Open terminal from root project folder and run `mvn test`  OR
 - Open project in code editor like eclipse or intellij idea ==> right click on testng.xml ==> run as testng.xml
 
+### Report Path
+```
+<ROOT_PROJECT>/reports/index.html
+```
+
 ### Sample Report
-![image](https://user-images.githubusercontent.com/65847528/145362670-7c35a8c4-c869-4bbd-8a15-02d1ffa9eec4.png)
+![image](https://user-images.githubusercontent.com/65847528/145385784-766415b6-9591-4055-ac18-6d44cd4bbe5e.png)

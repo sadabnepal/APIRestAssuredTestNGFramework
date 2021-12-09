@@ -2,7 +2,7 @@
 test-output/
 target/
 /src/main/app/node_modules/**
-reports/
+reports
 .settings
 .project
 .classpath
