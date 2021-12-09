@@ -15,8 +15,8 @@ public class LocalAPITests {
         baseURI = "http://localhost:3000/";
     }
 
-    @Test(priority = 3)
-    public static  void getCompanyTest() {
+    @Test(priority = 3, description = "Employee Data Test")
+    public static  void getEmployeesTest() {
         Response response = given().when().get("employees").then().extract().response();
 
         Assert.assertEquals(response.statusCode(), 200);
@@ -26,8 +26,8 @@ public class LocalAPITests {
         Assert.assertEquals(jsonPath.getString("data[0].last_name"), "Eschweiler");
     }
 
-    @Test(priority = 4)
-    public static void  getEmployeesTest() {
+    @Test(priority = 4, description = "Company Information Test")
+    public static void  getCompanyTest() {
         Response response = given().when().get("company").then().extract().response();
 
         JsonPath jsonPath = convertResponseToJson(response);

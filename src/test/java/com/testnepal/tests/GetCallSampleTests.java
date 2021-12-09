@@ -10,7 +10,7 @@ import static com.testnepal.utils.JsonFormatter.*;
 
 public class GetCallSampleTests extends BaseTest {
 
-	@Test(priority = 0)
+	@Test(priority = 0 , description = "Get User By Test ID")
 	public static void getUsersByIDTest() {
 		Response response =  given().when().get("users/2").then().extract().response();
 
@@ -22,7 +22,7 @@ public class GetCallSampleTests extends BaseTest {
 		Assert.assertEquals(jsonPath.getString("data.email"), "janet.weaver@reqres.in");
 	}
 
-	@Test(priority = 1)
+	@Test(priority = 1, description = "Get User List By Page Number")
 	public static void getUserListByPageTest() {
 		Response response = given().queryParam("page", "2").when().get("users")
 				.then().extract().response();
