@@ -4,10 +4,10 @@ import java.util.HashMap;
 
 public class Payload {
 
-    public static HashMap<String, String> createUserPayload(String name, String role) {
+    public static HashMap<String, String> createUpdateUserPayload(String name, String role) {
         HashMap<String, String> data = new HashMap<>();
         data.put("name", name);
         data.put("job", role);
-        return  data;
+        return data;
     }
 }

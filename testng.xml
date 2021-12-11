@@ -10,6 +10,9 @@
         <classes>
             <class name="com.testnepal.tests.GetCallSampleTests" />
             <class name="com.testnepal.tests.PostCallSampleTests" />
+            <class name="com.testnepal.tests.PatchCallSampleTests" />
+            <class name="com.testnepal.tests.PutCallSampleTests" />
+            <class name="com.testnepal.tests.DeleteCallSampleTests" />
         </classes>
     </test>
 
