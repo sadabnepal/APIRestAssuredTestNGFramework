@@ -8,8 +8,8 @@ API Automation Test is RestAssured based TestNG framework to perform API testing
 
 ### Getting Started
 ```
-1. git clone https://github.com/sadabnepal/RestAssuredAPITestAutomation.git
-2. Navigate to RestAssuredAPITestAutomation
+1. git clone https://github.com/sadabnepal/RestAssuredAutomationFramework.git
+2. Navigate to RestAssuredAutomationFramework
 ```
 
 ### API Sources:
