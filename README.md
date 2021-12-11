@@ -17,8 +17,10 @@ API Automation Test is RestAssured based TestNG framework to perform API testing
     - ReqRes API: https://reqres.in/
 
 ### Running Test
-- Start local server => navigate to `src/main/app` folder and run `npm start` command
-- Open terminal from root project folder and run `mvn test`  OR
+- Navigate to `src/main/app` folder and run below commands
+    - `npm install` to install required dependencies for local api (nodejs required)
+    - `npm start` to start local api server (leave the terminal opened) 
+- Open other terminal from root project folder and run `mvn test`  OR
 - Open project in code editor like eclipse or intellij idea ==> right click on testng.xml ==> run as testng.xml
 
 ### Report Path
