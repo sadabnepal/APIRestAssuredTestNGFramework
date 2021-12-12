@@ -6,17 +6,16 @@ import io.restassured.response.Response;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-import static com.testnepal.constants.ResponseCodes.SUCCESS_STATUS_CODE;
-import static com.testnepal.resources.Payload.createUpdateUserPayload;
-import static com.testnepal.services.Endpoints.USERS;
-import static com.testnepal.services.Endpoints.USER_BY_ID;
-import static com.testnepal.utils.JsonFormatter.convertResponseToJson;
+import static com.testnepal.constants.ResponseCodes.*;
+import static com.testnepal.resources.Payload.*;
+import static com.testnepal.services.Endpoints.*;
+import static com.testnepal.utils.Formatter.convertResponseToJson;
 import static io.restassured.RestAssured.given;
 
 public class PatchCallSampleTests extends BaseTest {
 
     @Test(priority = 4, description = "Update user by ID PATCH")
-    public static void updateUserPatchTest() {
+    public void updateUserPatchTest() {
         int userID = 2;
 
         String user = "MD SAQIB";
@@ -28,6 +27,7 @@ public class PatchCallSampleTests extends BaseTest {
                 .contentType(ContentType.JSON)
                 .when().patch(USER_BY_ID)
                 .then().extract().response();
+        logResponseInReport(response);
 
         JsonPath jsonPath = convertResponseToJson(response);
         Assert.assertEquals(response.statusCode(), SUCCESS_STATUS_CODE);

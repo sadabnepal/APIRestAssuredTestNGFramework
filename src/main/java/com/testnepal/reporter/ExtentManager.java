@@ -34,4 +34,17 @@ public final class ExtentManager {
         extentTest = extentReports.createTest(testName).assignCategory(category).assignAuthor(authorName).assignDevice(device);
     }
 
+    public static void endExtentTest(String testName) {
+        extentReports.removeTest(testName);
+    }
+
+    private static void formatLogInReport(String content) {
+        String prettyPrint = content.replace("\n", "<br>");
+        ExtentManager.extentTest.info("<pre>" + prettyPrint + "</pre>");
+    }
+
+    public static void addResponseLogToReport(String response) {
+        formatLogInReport(response);
+    }
+
 }
