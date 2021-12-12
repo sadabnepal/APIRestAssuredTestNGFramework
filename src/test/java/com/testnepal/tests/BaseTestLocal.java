@@ -2,19 +2,18 @@ package com.testnepal.tests;
 
 import com.testnepal.reporter.ExtentManager;
 import io.restassured.response.Response;
-import org.testng.annotations.BeforeTest;
+import org.testng.annotations.BeforeMethod;
 
 import static io.restassured.RestAssured.baseURI;
 
-public class BaseTest {
+public class BaseTestLocal {
 
-    @BeforeTest
-    public void setUpBaseURI() {
-        baseURI = "https://reqres.in/api";
+    @BeforeMethod
+    public void setUpLocal() {
+        baseURI = "http://localhost:3000/";
     }
 
-    public void logResponseInReport(Response response) {
+    public void logLocalAPIResponseInReport(Response response) {
         ExtentManager.addResponseLogToReport(response.asPrettyString());
     }
-
 }

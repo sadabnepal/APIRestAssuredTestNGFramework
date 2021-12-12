@@ -8,21 +8,14 @@ import io.restassured.response.Response;
 import org.testng.Assert;
 import org.testng.annotations.*;
 
-import static com.testnepal.reporter.ExtentManager.addResponseLogToReport;
 import static io.restassured.RestAssured.*;
 
-public class LocalAPITests {
-
-    @BeforeMethod
-    public static void setUp() {
-        baseURI = "http://localhost:3000/";
-    }
+public class LocalAPITests extends BaseTestLocal {
 
     @Test(priority = 3, description = "Employee Data Test")
-    public static void getEmployeesTest() {
+    public void getEmployeesTest() {
         Response response = given().when().get("employees").then().extract().response();
-        addResponseLogToReport(response.asPrettyString());
-
+        logLocalAPIResponseInReport(response);
         Assert.assertEquals(response.statusCode(), SUCCESS_STATUS_CODE);
         JsonPath jsonPath = convertResponseToJson(response);
         Assert.assertEquals(jsonPath.getInt("data[0].id"), 1);
@@ -31,10 +24,9 @@ public class LocalAPITests {
     }
 
     @Test(priority = 4, description = "Company Information Test")
-    public static void getCompanyTest() {
+    public void getCompanyTest() {
         Response response = given().when().get("company").then().extract().response();
-        addResponseLogToReport(response.asPrettyString());
-
+        logLocalAPIResponseInReport(response);
         JsonPath jsonPath = convertResponseToJson(response);
         Assert.assertEquals(response.statusCode(), SUCCESS_STATUS_CODE);
         Assert.assertEquals(jsonPath.getString("name"), "Test Automation Hub");

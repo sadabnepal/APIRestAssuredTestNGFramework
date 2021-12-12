@@ -6,7 +6,6 @@ import io.restassured.response.Response;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-import static com.testnepal.reporter.ExtentManager.addResponseLogToReport;
 import static com.testnepal.constants.ResponseCodes.*;
 import static com.testnepal.resources.Payload.*;
 import static com.testnepal.services.Endpoints.*;
@@ -16,7 +15,7 @@ import static io.restassured.RestAssured.given;
 public class PatchCallSampleTests extends BaseTest {
 
     @Test(priority = 4, description = "Update user by ID PATCH")
-    public static void updateUserPatchTest() {
+    public void updateUserPatchTest() {
         int userID = 2;
 
         String user = "MD SAQIB";
@@ -28,7 +27,7 @@ public class PatchCallSampleTests extends BaseTest {
                 .contentType(ContentType.JSON)
                 .when().patch(USER_BY_ID)
                 .then().extract().response();
-        addResponseLogToReport(response.asPrettyString());
+        logResponseInReport(response);
 
         JsonPath jsonPath = convertResponseToJson(response);
         Assert.assertEquals(response.statusCode(), SUCCESS_STATUS_CODE);

@@ -6,7 +6,6 @@ import io.restassured.response.Response;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-import static com.testnepal.reporter.ExtentManager.addResponseLogToReport;
 import static com.testnepal.constants.ResponseCodes.*;
 import static com.testnepal.services.Endpoints.*;
 import static io.restassured.RestAssured.*;
@@ -16,7 +15,7 @@ import static com.testnepal.utils.Formatter.*;
 public class PostCallSampleTests extends BaseTest {
 
     @Test(priority = 2, description = "Create User")
-    public static void createUserTest() {
+    public void createUserTest() {
         String user = "MD SADAB";
         String job = "Tester";
 
@@ -25,8 +24,7 @@ public class PostCallSampleTests extends BaseTest {
                 .contentType(ContentType.JSON)
                 .when().post(USERS)
                 .then().extract().response();
-        addResponseLogToReport(response.asPrettyString());
-
+        logResponseInReport(response);
         JsonPath jsonPath = convertResponseToJson(response);
         Assert.assertEquals(response.statusCode(), CREATED_STATUS_CODE);
         Assert.assertEquals(jsonPath.getString("name"), user);

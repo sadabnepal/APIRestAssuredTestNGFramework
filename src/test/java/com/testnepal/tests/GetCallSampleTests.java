@@ -6,7 +6,6 @@ import org.testng.Assert;
 import org.testng.annotations.*;
 import io.restassured.response.Response;
 
-import static com.testnepal.reporter.ExtentManager.addResponseLogToReport;
 import static com.testnepal.services.Endpoints.*;
 import static com.testnepal.constants.ResponseCodes.*;
 import static io.restassured.RestAssured.*;
@@ -20,9 +19,7 @@ public class GetCallSampleTests extends BaseTest {
         Response response = given().filter(new RequestLoggingFilter())
                 .when().pathParam("id", userID).get(USER_BY_ID)
                 .then().extract().response();
-
-        addResponseLogToReport(response.asPrettyString());
-
+        logResponseInReport(response);
         JsonPath jsonPath = convertResponseToJson(response);
         Assert.assertEquals(response.statusCode(), SUCCESS_STATUS_CODE);
         Assert.assertEquals(jsonPath.getInt("data.id"), userID);
@@ -37,9 +34,7 @@ public class GetCallSampleTests extends BaseTest {
         Response response = given().filter(new RequestLoggingFilter())
                 .queryParam("page", pageNumber).when().get(USERS)
                 .then().extract().response();
-
-        addResponseLogToReport(response.asPrettyString());
-
+        logResponseInReport(response);
         JsonPath jsonPath = convertResponseToJson(response);
         Assert.assertEquals(response.statusCode(), SUCCESS_STATUS_CODE);
         Assert.assertEquals(jsonPath.getInt("page"), pageNumber);

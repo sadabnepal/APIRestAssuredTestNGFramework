@@ -3,7 +3,6 @@ package com.testnepal.reporter;
 import com.aventstack.extentreports.*;
 import com.aventstack.extentreports.reporter.*;
 import com.aventstack.extentreports.reporter.configuration.Theme;
-import com.testnepal.utils.Formatter;
 
 import java.util.Objects;
 
@@ -39,8 +38,13 @@ public final class ExtentManager {
         extentReports.removeTest(testName);
     }
 
+    private static void formatLogInReport(String content) {
+        String prettyPrint = content.replace("\n", "<br>");
+        ExtentManager.extentTest.info("<pre>" + prettyPrint + "</pre>");
+    }
+
     public static void addResponseLogToReport(String response) {
-        Formatter.formatLogInReport(response);
+        formatLogInReport(response);
     }
 
 }
