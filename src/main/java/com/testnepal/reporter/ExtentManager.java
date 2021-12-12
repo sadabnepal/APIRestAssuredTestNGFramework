@@ -3,6 +3,7 @@ package com.testnepal.reporter;
 import com.aventstack.extentreports.*;
 import com.aventstack.extentreports.reporter.*;
 import com.aventstack.extentreports.reporter.configuration.Theme;
+import com.testnepal.utils.Formatter;
 
 import java.util.Objects;
 
@@ -32,6 +33,14 @@ public final class ExtentManager {
 
     public static void createExtentTest(String testName, String category, String authorName, String device) {
         extentTest = extentReports.createTest(testName).assignCategory(category).assignAuthor(authorName).assignDevice(device);
+    }
+
+    public static void endExtentTest(String testName) {
+        extentReports.removeTest(testName);
+    }
+
+    public static void addResponseLogToReport(String response) {
+        Formatter.formatLogInReport(response);
     }
 
 }

@@ -1,23 +1,27 @@
 package com.testnepal.tests;
 
+import io.restassured.filter.log.RequestLoggingFilter;
 import io.restassured.path.json.JsonPath;
 import org.testng.Assert;
 import org.testng.annotations.*;
 import io.restassured.response.Response;
 
+import static com.testnepal.reporter.ExtentManager.addResponseLogToReport;
 import static com.testnepal.services.Endpoints.*;
 import static com.testnepal.constants.ResponseCodes.*;
 import static io.restassured.RestAssured.*;
-import static com.testnepal.utils.JsonFormatter.*;
+import static com.testnepal.utils.Formatter.*;
 
 public class GetCallSampleTests extends BaseTest {
 
     @Test(priority = 0, description = "Get user by ID")
     public void getUsersByIDTest() {
         int userID = 2;
-        Response response = given()
+        Response response = given().filter(new RequestLoggingFilter())
                 .when().pathParam("id", userID).get(USER_BY_ID)
                 .then().extract().response();
+
+        addResponseLogToReport(response.asPrettyString());
 
         JsonPath jsonPath = convertResponseToJson(response);
         Assert.assertEquals(response.statusCode(), SUCCESS_STATUS_CODE);
@@ -30,8 +34,11 @@ public class GetCallSampleTests extends BaseTest {
     @Test(priority = 1, description = "Get User List By Page Number")
     public void getUserListByPageTest() {
         int pageNumber = 2;
-        Response response = given().queryParam("page", pageNumber).when().get(USERS)
+        Response response = given().filter(new RequestLoggingFilter())
+                .queryParam("page", pageNumber).when().get(USERS)
                 .then().extract().response();
+
+        addResponseLogToReport(response.asPrettyString());
 
         JsonPath jsonPath = convertResponseToJson(response);
         Assert.assertEquals(response.statusCode(), SUCCESS_STATUS_CODE);
@@ -46,7 +53,7 @@ public class GetCallSampleTests extends BaseTest {
     @Test(priority = 6, description = "User not found user ID")
     public void userNotFoundTest() {
         int userID = 23;
-        Response response = given()
+        Response response = given().filter(new RequestLoggingFilter())
                 .when().pathParam("id", userID).get(USER_BY_ID)
                 .then().extract().response();
         Assert.assertEquals(response.statusCode(), NOT_FOUND_STATUS_CODE);

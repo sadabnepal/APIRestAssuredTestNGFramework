@@ -6,11 +6,12 @@ import io.restassured.response.Response;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+import static com.testnepal.reporter.ExtentManager.addResponseLogToReport;
 import static com.testnepal.constants.ResponseCodes.*;
 import static com.testnepal.services.Endpoints.*;
 import static io.restassured.RestAssured.*;
 import static com.testnepal.resources.Payload.*;
-import static com.testnepal.utils.JsonFormatter.*;
+import static com.testnepal.utils.Formatter.*;
 
 public class PostCallSampleTests extends BaseTest {
 
@@ -24,6 +25,7 @@ public class PostCallSampleTests extends BaseTest {
                 .contentType(ContentType.JSON)
                 .when().post(USERS)
                 .then().extract().response();
+        addResponseLogToReport(response.asPrettyString());
 
         JsonPath jsonPath = convertResponseToJson(response);
         Assert.assertEquals(response.statusCode(), CREATED_STATUS_CODE);

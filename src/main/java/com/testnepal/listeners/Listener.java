@@ -1,8 +1,8 @@
 package com.testnepal.listeners;
 
+import com.aventstack.extentreports.Status;
 import com.testnepal.reporter.ExtentManager;
 import org.testng.*;
-
 
 public class Listener implements ITestListener, ISuiteListener {
     @Override
@@ -17,22 +17,28 @@ public class Listener implements ITestListener, ISuiteListener {
 
     @Override
     public void onTestStart(ITestResult result) {
-        ExtentManager.createExtentTest(result.getMethod().getDescription(), "regression", "sadab", "Chrome");
+        String testName = result.getMethod().getDescription();
+        ExtentManager.createExtentTest(testName, "regression", "sadab", "Chrome");
+        ExtentManager.extentTest.pass(testName + " started successfully !!!");
     }
 
     @Override
     public void onTestSuccess(ITestResult result) {
-        ExtentManager.extentTest.pass(result.getMethod().getDescription() + " is passed");
+        ExtentManager.extentTest.pass(result.getMethod().getDescription() + " TEST is passed !!!");
+        ExtentManager.endExtentTest(ExtentManager.extentTest.getExtent().toString());
     }
 
     @Override
     public void onTestFailure(ITestResult result) {
-        ExtentManager.extentTest.fail(result.getMethod().getDescription() + " is failed");
+        String error = result.getMethod().getDescription() + " TEST is failed !!!<br>" + result.getThrowable();
+        ExtentManager.extentTest.log(Status.FAIL, error);
+        ExtentManager.endExtentTest(ExtentManager.extentTest.getExtent().toString());
     }
 
     @Override
     public void onTestSkipped(ITestResult result) {
-        ExtentManager.extentTest.skip(result.getMethod().getDescription() + " is skipped");
+        ExtentManager.extentTest.skip(result.getMethod().getDescription() + " TEST is skipped !!!");
+        ExtentManager.endExtentTest(ExtentManager.extentTest.getExtent().toString());
     }
 
 }
