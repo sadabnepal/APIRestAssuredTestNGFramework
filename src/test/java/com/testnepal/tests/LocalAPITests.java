@@ -33,4 +33,18 @@ public class LocalAPITests extends BaseTestLocal {
         Assert.assertEquals(jsonPath.getString("location"), "Nepal");
         Assert.assertEquals(jsonPath.getInt("noOfEmployee"), 200);
     }
+
+    @Test(priority = 5, description = "Movie Information by ID Test")
+    public void getMovieByID() {
+        int id = 123;
+        Response response = given().queryParam("id", id).get("/movies")
+                .then().extract().response();
+        logLocalAPIResponseInReport(response);
+        JsonPath jsonPath = convertResponseToJson(response);
+        Assert.assertEquals(response.statusCode(), 200);
+        Assert.assertEquals(jsonPath.getInt("[0].id"), id);
+        Assert.assertEquals(jsonPath.getString("[0].name"), "Dhuruvangal Pathinaaru");
+        Assert.assertEquals(jsonPath.getString("[0].genre"), "Thriller");
+        Assert.assertEquals(jsonPath.getInt("[0].rating"), 9);
+    }
 }
