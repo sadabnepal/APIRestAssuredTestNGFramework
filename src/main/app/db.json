@@ -21,42 +21,11 @@
       }
     ]
   },
-  "company" : {
-    "name" : "Test Automation Hub",
-    "location" : "Nepal",
+  "company": {
+    "name": "Test Automation Hub",
+    "location": "Nepal",
     "noOfEmployee": 200,
     "business": "Test Automation"
   },
-  "movies" : [
-    {
-      "id": 121,
-      "name": "Age of Ultron",
-      "genre": "Sci-fi",
-      "rating": 8
-    },
-    {
-      "id": 122,
-      "name": "Wazir",
-      "genre": "Thriller",
-      "rating": 7
-    },
-    {
-      "id": 123,
-      "name": "Dhuruvangal Pathinaaru",
-      "genre": "Thriller",
-      "rating": 9
-    },
-    {
-      "id": 124,
-      "name": "Agent Sai Srinivasa Athreya",
-      "genre": "Thriller",
-      "rating": 8
-    },
-    {
-      "id": 125,
-      "name": "Drishyam",
-      "genre": "Thriller",
-      "rating": 9
-    }
-  ]
+  "movies": []
 }

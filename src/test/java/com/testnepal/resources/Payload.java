@@ -10,4 +10,13 @@ public class Payload {
         data.put("job", role);
         return data;
     }
+
+    public static HashMap<String, Object> createMoviePayload(int id, String name, String genre, int rating) {
+        HashMap<String, Object> data = new HashMap<>();
+        data.put("id", id);
+        data.put("name", name);
+        data.put("genre", genre);
+        data.put("rating", rating);
+        return data;
+    }
 }
